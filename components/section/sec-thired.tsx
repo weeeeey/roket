@@ -4,14 +4,14 @@ import React, { useEffect, useState } from 'react';
 
 export const SecThired = () => {
     const [selectedImage, setselectedImage] = useState('01');
-    useEffect(() => {
-        setInterval(() => {
-            setselectedImage((p) => (((+p + 1) % 14) + '').padStart(2, '0'));
-        }, 500);
-    }, []);
 
     useEffect(() => {
-        console.log(selectedImage);
+        const interval = setTimeout(() => {
+            const nextImageNumber = (+selectedImage % 13) + 1 + '';
+            setselectedImage(nextImageNumber.padStart(2, '0'));
+        }, 100);
+
+        return () => clearTimeout(interval);
     }, [selectedImage]);
 
     return (

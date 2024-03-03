@@ -16,7 +16,7 @@ const font = Oswald({
 const SecFirst = () => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
-    const y = useParallas(scrollYProgress, -100);
+    const y = useParallas(scrollYProgress, -200);
 
     const ref = useRef(null);
     const isInview = useInView(ref, { amount: 0.5 });
