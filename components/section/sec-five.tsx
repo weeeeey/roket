@@ -19,7 +19,7 @@ const font = Oswald({
 });
 
 export const SecFive = () => {
-    let baseVelocity = 5;
+    let baseVelocity = 10;
     const baseX = useMotionValue(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollY } = useScroll({ target: containerRef });
@@ -32,7 +32,7 @@ export const SecFive = () => {
         clamp: false,
     });
 
-    const x = useTransform(baseX, (v) => `${wrap(-100, 200, v)}%`);
+    const x = useTransform(baseX, (v) => `${wrap(-100, 0, v)}%`);
 
     const directionFactor = useRef<number>(1);
     useAnimationFrame((t: any, delta) => {
@@ -56,19 +56,25 @@ export const SecFive = () => {
     return (
         <div
             ref={containerRef}
-            className={`flex flex-col justify-center items-center ${font.className} space-y-20`}
+            className={`flex flex-col justify-center items-center ${font.className} space-y-20 overflow-hidden`}
         >
             <h3 className="text-8xl text-red-500 px-72 text-center font-extrabold">
                 READY FOR MASS PRODUCTION
             </h3>
-            <motion.div
-                className="relative w-full h-96 overflow-hidden "
-                // style={{ x }}
-            >
-                <Image alt="five" src="/images/five.webp" fill />
-                <Image alt="five" src="/images/five.webp" fill />
-                <Image alt="five" src="/images/five.webp" fill />
-            </motion.div>
+            <div className="flex w-full overflow-hidden h-full whitespace-nowrap ">
+                <motion.img
+                    alt="five"
+                    src="/images/five.webp"
+                    className="w-[100vw] h-96 "
+                    style={{ x }}
+                />
+                <motion.img
+                    alt="five"
+                    src="/images/five.webp"
+                    className="w-[100vw] h-96"
+                    style={{ x }}
+                />
+            </div>
         </div>
     );
 };
