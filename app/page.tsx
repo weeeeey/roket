@@ -8,9 +8,16 @@ import { SecSecond } from '@/components/section/sec-second';
 import { SecSeven } from '@/components/section/sec-seven';
 import { SecSix } from '@/components/section/sec-six';
 import { SecThired } from '@/components/section/sec-thired';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const MainPage = () => {
+    const [isMount, setisMount] = useState(false);
+
+    useEffect(() => {
+        setisMount(true);
+    }, []);
+    if (!isMount) return null;
+
     return (
         <div className="w-full h-full mt-20  ">
             <SecFirst />

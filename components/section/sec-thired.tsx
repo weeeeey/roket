@@ -1,24 +1,32 @@
 'use client';
 import { Oswald } from 'next/font/google';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const font = Oswald({
     subsets: ['latin'],
     weight: '700',
 });
 
+const array = Array.from({ length: 13 }, (_, i) =>
+    (i + 1 + '').padStart(2, '0')
+);
+
 export const SecThired = () => {
-    const [selectedImage, setselectedImage] = useState('01');
+    const [selectedImage, setSelectedImage] = useState(0);
 
     useEffect(() => {
-        const interval = setTimeout(() => {
-            const nextImageNumber = (+selectedImage % 13) + 1 + '';
-            setselectedImage(nextImageNumber.padStart(2, '0'));
-        }, 100);
+        const intervalId = setInterval(() => {
+            setSelectedImage((p) => (p % 13) + 1);
+            // setSelectedImage((prevImage) =>
+            // {
+            // const nextImageNumber = (+prevImage % 13) + 1 + '';
+            // return nextImageNumber.padStart(2, '0');
+            // }
+        }, 100); // 매 1초마다 실행
 
-        return () => clearTimeout(interval);
-    }, [selectedImage]);
+        return () => clearInterval(intervalId); // Cleanup function
+    }, []);
 
     return (
         <div className="px-5 h-full">
@@ -34,17 +42,25 @@ export const SecThired = () => {
                     </div>
                     <p className="pr-24">
                         Our design approach always weighs both. The end result?
-                        A life-enhancing product that{`'s`} easy to use and
+                        A life-enhancing product that{`'`}s easy to use and
                         love.
                     </p>
                 </div>
                 <div className="w-1/3">
                     <div className="relative w-full h-[30rem] top-5 ">
-                        <Image
-                            alt="aa"
-                            src={`/images/c-${selectedImage}.png`}
-                            fill
-                        />
+                        {array.map((text, idx) => (
+                            <Image
+                                key={text}
+                                alt="aa"
+                                src={`/images/c-${text}.png`}
+                                fill
+                                className={`absolute top-0 left-0 opacity-0 ${
+                                    selectedImage === idx + 1
+                                        ? 'opacity-100'
+                                        : 'opacity-0'
+                                }`}
+                            />
+                        ))}
                     </div>
                 </div>
                 <div className="w-1/3  flex justify-end items-center ">
