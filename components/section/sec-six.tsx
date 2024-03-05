@@ -13,10 +13,10 @@ const font = Oswald({
 export const SecSix = () => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
-    const y = useParallas(scrollYProgress, -20);
+    const y = useParallas(scrollYProgress, -30);
 
     return (
-        <div ref={containerRef} className="text-red-500 px-10 space-y-10 mt-20">
+        <div ref={containerRef} className="text-red-500 px-10 space-y-10 mt-52">
             <h3
                 className={`${font.className} text-8xl font-extrabold text-center px-60`}
             >

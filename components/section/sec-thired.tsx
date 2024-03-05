@@ -1,7 +1,9 @@
 'use client';
+import { useParallas } from '@/hook/use-parallas';
+import { useScroll, motion, useTransform } from 'framer-motion';
 import { Oswald } from 'next/font/google';
 import Image from 'next/image';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 const font = Oswald({
     subsets: ['latin'],
@@ -13,19 +15,21 @@ const array = Array.from({ length: 13 }, (_, i) =>
 );
 
 export const SecThired = () => {
+    const ref = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: ref });
+    const { scrollYProgress: containerY } = useScroll({ target: containerRef });
+    const y = useParallas(scrollYProgress, -30);
+    const x = useTransform(containerY, [0, 1], [-70, 50]);
+
     const [selectedImage, setSelectedImage] = useState(0);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
             setSelectedImage((p) => (p % 13) + 1);
-            // setSelectedImage((prevImage) =>
-            // {
-            // const nextImageNumber = (+prevImage % 13) + 1 + '';
-            // return nextImageNumber.padStart(2, '0');
-            // }
-        }, 100); // 매 1초마다 실행
+        }, 100);
 
-        return () => clearInterval(intervalId); // Cleanup function
+        return () => clearInterval(intervalId);
     }, []);
 
     return (
@@ -46,7 +50,7 @@ export const SecThired = () => {
                         love.
                     </p>
                 </div>
-                <div className="w-1/3">
+                <div ref={ref} className="w-1/3">
                     <div className="relative w-full h-[30rem] top-5 ">
                         {array.map((text, idx) => (
                             <Image
@@ -63,24 +67,26 @@ export const SecThired = () => {
                         ))}
                     </div>
                 </div>
-                <div className="w-1/3  flex justify-end items-center ">
-                    <div className="relative w-52 h-52 top-16 overflow-hidden rounded-xl right-5 ">
-                        <Image
+                <div className="w-1/3  flex justify-end items-end pt-20">
+                    <div className="w-52 h-52  overflow-hidden rounded-xl flex justify-center items-center">
+                        <motion.img
                             alt="night"
                             src={`/images/s4-night.jpg`}
-                            fill
-                            className="scale-y-125 scale-x-150 translate-x-5"
+                            style={{ y }}
+                            className="w-64 h-72 "
                         />
                     </div>
                 </div>
             </div>
-            <div className="w-1/3 h-[50vh] overflow-hidden relative -top-20 rounded-xl ">
-                <Image
+            <div
+                ref={containerRef}
+                className="w-1/3 h-[50vh] relative -top-20 rounded- overflow-hidden  justify-center flex items-center"
+            >
+                <motion.img
                     alt="day"
                     src="/images/s4-day.jpg"
-                    width={1000}
-                    height={1000}
-                    className="scale-150 "
+                    style={{ x, scaleX: 1.3 }}
+                    className=" w-[30rem] h-96 rounded-lg  "
                 />
             </div>
         </div>

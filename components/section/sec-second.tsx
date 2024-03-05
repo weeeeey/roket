@@ -1,14 +1,13 @@
 'use client';
 import useParaWithRef from '@/hook/use-para-with-ref';
 import { useParallas } from '@/hook/use-parallas';
-import { useScroll, motion, useInView, inView } from 'framer-motion';
-import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import { useScroll, motion } from 'framer-motion';
+import React, { useRef } from 'react';
 
 export const SecSecond = () => {
     const ref = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: ref });
-    const y = useParallas(scrollYProgress, -30);
+    const y = useParallas(scrollYProgress, -50);
 
     return (
         <div className="w-full h-full grid grid-cols-2 px-10">

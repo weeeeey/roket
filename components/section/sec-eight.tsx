@@ -1,11 +1,5 @@
 'use client';
-import React, {
-    ReactNode,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Oswald } from 'next/font/google';
 
 const font = Oswald({
@@ -32,9 +26,9 @@ const Text = ({
             ref.current!.style.transform = `translateX(${x}px)`;
         };
 
-        const animate = (num: number = 5) => {
+        const animate = () => {
             if (isHover) return;
-            setX((p) => p - num);
+            setX((p) => p - 5);
             marqueeText();
         };
         window.requestAnimationFrame(() => animate());

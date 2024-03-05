@@ -23,6 +23,7 @@ export const SecFive = () => {
     const baseX = useMotionValue(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollY } = useScroll({ target: containerRef });
+
     const scrollVelocity = useVelocity(scrollY);
     const smoothVelocity = useSpring(scrollVelocity, {
         damping: 50,
