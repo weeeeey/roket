@@ -2,6 +2,8 @@
 import { Oswald } from 'next/font/google';
 import Image from 'next/image';
 import React from 'react';
+import { useScroll, motion } from 'framer-motion';
+import { useParallas } from '@/hook/use-parallas';
 
 const font = Oswald({
     subsets: ['latin'],
@@ -9,8 +11,12 @@ const font = Oswald({
 });
 
 export const SecSix = () => {
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: containerRef });
+    const y = useParallas(scrollYProgress, -20);
+
     return (
-        <div className="text-red-500 px-10 space-y-10 mt-20">
+        <div ref={containerRef} className="text-red-500 px-10 space-y-10 mt-20">
             <h3
                 className={`${font.className} text-8xl font-extrabold text-center px-60`}
             >
@@ -29,13 +35,13 @@ export const SecSix = () => {
                         lucky—award-winning solutions. Here are just a few:
                     </p>
                 </div>
-                <div className="w-2/5 h-full flex justify-end items-center">
-                    <div className="relative w-56 h-56 left-10">
-                        <Image
-                            alt="food"
+                <div className="w-2/5 h-full flex justify-end items-center ">
+                    <div className=" w-48 h-48  overflow-hidden flex justify-center items-center rounded-xl">
+                        <motion.img
                             src="/images/s6.jpg"
-                            fill
-                            className="rounded-xl"
+                            alt="food"
+                            style={{ y }}
+                            className="w-96 h-96 "
                         />
                     </div>
                 </div>

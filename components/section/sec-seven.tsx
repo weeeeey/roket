@@ -15,8 +15,8 @@ export const SecSeven = () => {
             >
                 AWARDS & PATENTS
             </h3>
-            <div className="flex flex-col   px-60 cursor-pointer">
-                <div className="flex justify-between py-4  items-center border-b border-red-500 group hover:px-3 relative overflow-hidden ">
+            <div className="flex flex-col   px-60 ">
+                <div className="cursor-pointer flex justify-between py-4  items-center border-b border-red-500 group hover:px-3 relative overflow-hidden ">
                     <div className="absolute bg-red-500 top-0 left-0 w-0 h-full group-hover:w-full -z-10  transition-all duration-500 " />
                     <div className="font-bold text-4xl group-hover:text-white  transition-all">
                         Stojo
@@ -25,7 +25,7 @@ export const SecSeven = () => {
                         Red Dot Award
                     </div>
                 </div>
-                <div className="flex justify-between py-4 items-center  border-b border-red-500 group hover:px-3 relative overflow-hidden">
+                <div className="cursor-pointer flex justify-between py-4 items-center  border-b border-red-500 group hover:px-3 relative overflow-hidden">
                     <div className="absolute bg-red-500 top-0 left-0 w-0 h-full group-hover:w-full -z-10  transition-all duration-500 " />
                     <div className="font-bold text-4xl group-hover:text-white  transition-all">
                         Stojo Patents
@@ -34,7 +34,7 @@ export const SecSeven = () => {
                         Design & Utility Patents
                     </div>
                 </div>
-                <div className="flex justify-between py-4 items-center  border-b border-red-500 group hover:px-3 relative overflow-hidden">
+                <div className="cursor-pointer flex justify-between py-4 items-center  border-b border-red-500 group hover:px-3 relative overflow-hidden">
                     <div className="absolute bg-red-500 top-0 left-0 w-0 h-full group-hover:w-full -z-10  transition-all duration-500 " />
                     <div className="font-bold text-4xl group-hover:text-white  transition-all">
                         True Places
@@ -43,7 +43,7 @@ export const SecSeven = () => {
                         A{`'`}Design Award
                     </div>
                 </div>
-                <div className="flex justify-between py-4 items-center  border-b border-red-500 group hover:px-3 relative overflow-hidden">
+                <div className="cursor-pointer flex justify-between py-4 items-center  border-b border-red-500 group hover:px-3 relative overflow-hidden">
                     <div className="absolute bg-red-500 top-0 left-0 w-0 h-full group-hover:w-full -z-10  transition-all duration-500 " />
                     <div className="font-bold text-4xl group-hover:text-white  transition-all">
                         {' '}
@@ -53,7 +53,7 @@ export const SecSeven = () => {
                         Folding Mechanism Patent
                     </div>
                 </div>
-                <div className="flex justify-between py-4  items-center border-b border-red-500 group hover:px-3 relative overflow-hidden">
+                <div className="cursor-pointer flex justify-between py-4  items-center border-b border-red-500 group hover:px-3 relative overflow-hidden">
                     <div className="absolute bg-red-500 top-0 left-0 w-0 h-full group-hover:w-full -z-10  transition-all duration-500 " />
                     <div className="font-bold text-4xl group-hover:text-white  transition-all">
                         {' '}
@@ -63,7 +63,7 @@ export const SecSeven = () => {
                         Excellence in HouseWares Awards
                     </div>
                 </div>
-                <div className="flex justify-between py-4  items-center border-b border-red-500 group hover:px-3 relative overflow-hidden">
+                <div className="cursor-pointer flex justify-between py-4  items-center border-b border-red-500 group hover:px-3 relative overflow-hidden">
                     <div className="absolute bg-red-500 top-0 left-0 w-0 h-full group-hover:w-full -z-10  transition-all duration-500 " />
                     <div className="font-bold text-4xl group-hover:text-white  transition-all">
                         Ullo Open

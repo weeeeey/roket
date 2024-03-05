@@ -15,6 +15,14 @@ const config: Config = {
             },
         },
         keyframes: {
+            shine: {
+                '0%': {
+                    backgroundPosition: '0',
+                },
+                '100%': {
+                    backgroundPosition: '1000px',
+                },
+            },
             'fade-in': {
                 '0%': {
                     backgroundColor: 'rgba(0, 0, 0, 0)',
@@ -25,6 +33,9 @@ const config: Config = {
                 '0%': { opacity: '1' },
                 '100%': { opacity: '0' },
             },
+        },
+        animation: {
+            shine: 'shine 2s infinite linear',
         },
     },
     plugins: [],

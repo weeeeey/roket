@@ -15,50 +15,50 @@ const font = Oswald({
 
 const Text = ({
     isHover,
-    color,
-    num,
+    containerRef,
 }: {
     isHover: boolean;
-    color: string;
-    num: number;
+    containerRef: React.RefObject<HTMLDivElement>;
 }) => {
-    const [x, setX] = useState(0);
     const ref = useRef<HTMLDivElement>(null);
+    const [x, setX] = useState(0);
 
-    window.requestAnimationFrame(() => {
-        if (isHover) return;
-        if (!isHover) {
-            setX((prevX) => prevX - 5);
-        }
-        if (ref.current?.getBoundingClientRect().right! < 0) {
-            setX(window.innerWidth + 100);
-        }
-    });
+    useEffect(() => {
+        const marqueeText = () => {
+            if (x * -1 > containerRef.current?.scrollWidth! / 2) {
+                ref.current!.style.transform = `translateX(0)`;
+                setX(0);
+            }
+            ref.current!.style.transform = `translateX(${x}px)`;
+        };
+
+        const animate = (num: number = 5) => {
+            if (isHover) return;
+            setX((p) => p - num);
+            marqueeText();
+        };
+        window.requestAnimationFrame(() => animate());
+        // animate();
+    }, [x, containerRef, isHover]);
 
     return (
-        <>
-            <div
-                ref={ref}
-                className={`mr-2  ${
-                    color === 'red' ? 'text-red-500' : 'text-blue-500'
-                }`}
-                style={{
-                    transform: `translateX(${x}px)`,
-                }}
-            >
-                <span className="italic mr-3">studio@</span>
-                <span>loketdesign.com</span>
-            </div>
-        </>
+        <div ref={ref} className={`mr-2`}>
+            <span className="italic mr-3">studio@</span>
+            <span>loketdesign.com</span>
+        </div>
     );
 };
 
 export const SecEight = () => {
     const [isHover, setIsHover] = useState(false);
     const [isMount, setisMount] = useState(false);
+
+    const ref = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         setisMount(true);
     }, []);
+
     if (!isMount) return null;
 
     const handlePointerEnter = () => {
@@ -70,12 +70,13 @@ export const SecEight = () => {
 
     return (
         <div
+            ref={ref}
             onPointerEnter={handlePointerEnter}
             onPointerLeave={handlePointerLeave}
             className={`overflow-hidden flex mt-20 w-[100vw] py-2 pb-4 border-y border-red-500 text-red-500 font-extrabold text-9xl uppercase ${font.className} hover:bg-red-500 hover:text-white cursor-pointer `}
         >
-            <Text num={1} isHover={isHover} color="red" />
-            <Text num={2} isHover={isHover} color="blue" />
+            <Text containerRef={ref} isHover={isHover} />
+            <Text containerRef={ref} isHover={isHover} />
         </div>
     );
 };
