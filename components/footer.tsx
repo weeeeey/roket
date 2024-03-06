@@ -1,9 +1,17 @@
 'use client';
 import { ArrowUp } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SecEight } from './section/sec-eight';
 
 export const Footer = () => {
+    const [isMount, setisMount] = useState(false);
+
+    useEffect(() => {
+        setisMount(true);
+    }, []);
+
+    if (!isMount) return null;
+
     const handleClick = () => {
         window.scrollTo({
             top: 0,

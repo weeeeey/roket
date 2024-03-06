@@ -19,6 +19,8 @@ const Text = ({
 
     useEffect(() => {
         const marqueeText = () => {
+            if (!ref.current || !containerRef.current) return;
+
             if (x * -1 > containerRef.current?.scrollWidth! / 2) {
                 ref.current!.style.transform = `translateX(0)`;
                 setX(0);
@@ -31,8 +33,11 @@ const Text = ({
             setX((p) => p - 5);
             marqueeText();
         };
-        window.requestAnimationFrame(() => animate());
+        const animateId = window.requestAnimationFrame(() => animate());
         // animate();
+        return () => {
+            window.cancelAnimationFrame(animateId);
+        };
     }, [x, containerRef, isHover]);
 
     return (
@@ -45,9 +50,8 @@ const Text = ({
 
 export const SecEight = () => {
     const [isHover, setIsHover] = useState(false);
-    const [isMount, setisMount] = useState(false);
-
     const ref = useRef<HTMLDivElement>(null);
+    const [isMount, setisMount] = useState(false);
 
     useEffect(() => {
         setisMount(true);
@@ -67,7 +71,7 @@ export const SecEight = () => {
             ref={ref}
             onPointerEnter={handlePointerEnter}
             onPointerLeave={handlePointerLeave}
-            className={`overflow-hidden flex mt-20 w-[100vw] py-2 pb-4 border-y border-red-500 text-red-500 font-extrabold text-9xl uppercase ${font.className} hover:bg-red-500 hover:text-white cursor-pointer `}
+            className={`overflow-hidden flex mt-72 w-[100vw] py-2 pb-4 border-y border-red-500 text-red-500 font-extrabold text-9xl uppercase ${font.className} hover:bg-red-500 hover:text-white cursor-pointer `}
         >
             <Text containerRef={ref} isHover={isHover} />
             <Text containerRef={ref} isHover={isHover} />
