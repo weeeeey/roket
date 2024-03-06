@@ -5,13 +5,32 @@ import { Oswald } from 'next/font/google';
 import { useParallas } from '@/hook/use-parallas';
 import { useScroll, motion, useInView } from 'framer-motion';
 import Image from 'next/image';
-import React, { useRef } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 const font = Oswald({
     subsets: ['latin'],
     weight: '400',
 });
+
+const Text = ({
+    children,
+    delay = 0,
+}: {
+    delay?: number;
+    children: ReactNode;
+}) => {
+    return (
+        <motion.div
+            initial={{ y: 100, rotateX: 90 }}
+            animate={{ y: 0, rotateX: 0 }}
+            transition={{ duration: 1, delay }}
+            className="w-72 "
+        >
+            {children}
+        </motion.div>
+    );
+};
 
 const SecFirst = () => {
     const containerRef = useRef(null);
@@ -32,30 +51,56 @@ const SecFirst = () => {
                     height={100}
                 />
                 <div className="flex justify-between items-start text-sm w-full ">
-                    <div className="w-72">
+                    <Text>
                         We are a New York-based design studio—with roots in the
                         Netherlands—specializing in designing consumer products
                         and brands.
-                    </div>
-                    <div className="w-72">
+                    </Text>
+                    <Text delay={0.3}>
                         From initial idea to final production, we work with you
                         to craft products that blend both form and function with
                         exceptional elegance. We design. We develop. We get it
                         done—nicely.
-                    </div>
-                    <div className="w-72">
+                    </Text>
+                    <Text delay={0.6}>
                         68 Jay Street, Suite 1006 Brooklyn, NY 11201
                         +1.347.546.7865 studio@loketdesign.com
-                    </div>
+                    </Text>
                 </div>
                 <div className={cn('relative  w-full ', font.className)}>
-                    <div className="text-[30rem] font-extrabold text-center text-nowrap ">
-                        <span className="rotate-[18deg] inline-block">I</span>
-                        CONIC
-                    </div>
+                    <motion.div className="text-[30rem] font-extrabold text-center text-nowrap  ">
+                        <motion.div
+                            animate={{
+                                rotate: [0, 30, 10, 25, 12, 16, 14, 15],
+                            }}
+                            transition={{
+                                duration: 2,
+                                delay: 1,
+                                times: [
+                                    0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 1,
+                                ],
+                            }}
+                            className=" inline-block"
+                        >
+                            I
+                        </motion.div>
+                        <motion.div
+                            animate={{ rotate: [0, 10, 3.5, 7, 0] }}
+                            transition={{ duration: 1, delay: 1.125 }}
+                            className="inline-block"
+                        >
+                            C
+                        </motion.div>
+                        ONIC
+                    </motion.div>
 
                     {!isInview ? (
-                        <motion.div className="absolute z-10 top-0 left-0 w-full h-[1000px] flex justify-center items-center ">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1 }}
+                            className="absolute z-10 top-0 left-0 w-full h-[1000px] flex justify-center items-center "
+                        >
                             <Image
                                 alt="bottle"
                                 src="/images/bottle.png"

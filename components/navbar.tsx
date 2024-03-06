@@ -1,10 +1,14 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
+
+const contents = ['product', 'packaging', 'about'];
 
 export const Navbar = () => {
     const [isTop, setisTop] = useState(true);
+
     useEffect(() => {
         if (window.scrollY !== 0) setisTop(false);
 
@@ -22,10 +26,16 @@ export const Navbar = () => {
                 )}
             >
                 <h1 className="text-xl">loket.design</h1>
-                <div className="flex justify-between items-center space-x-4 text-sm ">
-                    <div>PRODUCT</div>
-                    <div>PACKAGINH</div>
-                    <div>ABOUT US</div>
+                <div className="flex justify-between items-center space-x-4 text-sm uppercase">
+                    {contents.map((content, idx) => (
+                        <Link href={`/${content}`} key={idx}>
+                            {content}
+                            {content === 'about' && ' us'}
+                        </Link>
+                    ))}
+                    {/* <div>PRODUCT</div>
+                    <div>PACKAGING</div>
+                    <div>ABOUT US</div> */}
                 </div>
             </div>
             <div

@@ -1,6 +1,5 @@
 'use client';
 import { Footer } from '@/components/footer';
-import { SecEight } from '@/components/section/sec-eight';
 import SecFirst from '@/components/section/sec-first';
 import { SecFive } from '@/components/section/sec-five';
 import { SecForth } from '@/components/section/sec-forth';
@@ -27,7 +26,6 @@ const MainPage = () => {
             <SecFive />
             <SecSix />
             <SecSeven />
-            <SecEight />
 
             <Footer />
         </div>
