@@ -1,28 +1,18 @@
+'use client';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
-const images = [
-    'Cleverpup',
-    'Ullo Open',
-    'Eku Tools',
-    'Eku Slices',
-    'Stojo',
-    'True Places',
-    'Bowl',
-    'Buoy',
-    'Float',
-    'Bottle',
-    'Double Twelve',
-    'Glow Bento',
-];
 interface ProItemProps {
     title: string;
     imgSrc: number;
 }
 
 export const ProItem = ({ imgSrc, title }: ProItemProps) => {
+    const pathname = usePathname();
+
     return (
         <div
             className={`col-span-6 flex flex-col  justify-center items-center ${
@@ -35,7 +25,7 @@ export const ProItem = ({ imgSrc, title }: ProItemProps) => {
                     width={400}
                     height={400}
                     alt="product"
-                    src={`/product/${imgSrc}.png`}
+                    src={`/${pathname.slice(1)}/${imgSrc}.png`}
                     className="group-hover:scale-105 transition-all"
                 />
                 <div className="mt-4 text-3xl relative group-hover:text-white flex items-center overflow-hidden ">
@@ -54,10 +44,14 @@ export const ProItem = ({ imgSrc, title }: ProItemProps) => {
     );
 };
 
-export const ProMain = () => {
+interface ProMainProps {
+    arr: string[];
+}
+
+export const ProMain = ({ arr }: ProMainProps) => {
     return (
-        <div className=" px-10 grid grid-cols-12 gap-y-10  ">
-            {images.map((title, idx) => (
+        <div className=" pl-48 pr-10 grid grid-cols-12 gap-y-10  ">
+            {arr.map((title, idx) => (
                 <ProItem key={idx} imgSrc={idx + 1} title={title} />
             ))}
         </div>

@@ -3,11 +3,26 @@ import { ProMain } from '@/components/product/pro-main';
 import { Title } from '@/components/title';
 import React from 'react';
 
+const product = [
+    'Cleverpup',
+    'Ullo Open',
+    'Eku Tools',
+    'Eku Slices',
+    'Stojo',
+    'True Places',
+    'Bowl',
+    'Buoy',
+    'Float',
+    'Bottle',
+    'Double Twelve',
+    'Glow Bento',
+];
+
 const ProductPage = () => {
     return (
         <>
             <Title />
-            <ProMain />
+            <ProMain arr={product} />
             <Footer />
         </>
     );

@@ -41,7 +41,7 @@ export const Navbar = () => {
         <>
             <div
                 className={cn(
-                    'w-full h-20  fixed top-0 inset-x-0   text-red-500 flex justify-between items-center px-10 py-1 font-semibold transition-all duration-700',
+                    'w-full h-20  fixed top-0 inset-x-0    text-red-500 flex justify-between items-center px-10 py-1 font-semibold transition-all duration-700',
                     !isTop && ' text-white z-50 bg-transparent shadow'
                 )}
             >
