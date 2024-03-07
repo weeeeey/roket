@@ -67,8 +67,8 @@ export const Title = ({ img = true }: TitleProps) => {
             </motion.div>
             {img && (
                 <motion.div
-                    initial={{ opacity: 0, rotateX: 90 }}
-                    animate={{ opacity: 1, rotateX: 0 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     transition={{
                         duration: 1.2,
                     }}

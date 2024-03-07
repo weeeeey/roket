@@ -26,7 +26,7 @@ export const ProItem = ({ imgSrc, title }: ProItemProps) => {
                     height={400}
                     alt="product"
                     src={`/${pathname.slice(1)}/${imgSrc}.png`}
-                    className="group-hover:scale-105 transition-all"
+                    className="group-hover:scale-110 transition-all"
                 />
                 <div className="mt-4 text-3xl relative group-hover:text-white flex items-center overflow-hidden ">
                     <div className="z-10 group-hover:pl-5 duration-700 py-1 inline-block mr-2 font-extrabold">
