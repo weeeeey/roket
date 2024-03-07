@@ -1,3 +1,4 @@
+'use client';
 import { Footer } from '@/components/footer';
 import { ProMain } from '@/components/product/pro-main';
 import { Title } from '@/components/title';
