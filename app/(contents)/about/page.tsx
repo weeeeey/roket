@@ -9,48 +9,48 @@ const AboutPage = () => {
     const [selectedIdx, setselectedIdx] = useState(-1);
 
     const containerRef = React.useRef<HTMLDivElement>(null);
-    const handleClick = (idx: number, ref: React.RefObject<HTMLDivElement>) => {
+
+    useEffect(() => {
+        containerRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }, []);
+
+    const handleClick = (
+        idx: number,
+        ref: React.RefObject<HTMLButtonElement>
+    ) => {
         if (idx === selectedIdx) {
             setselectedIdx(-1);
-            if (containerRef.current) {
-                containerRef.current.scrollIntoView({ behavior: 'smooth' });
-            }
         } else {
             setselectedIdx(idx);
-            if (ref.current) {
-                console.log(ref.current);
-                ref.current.scrollIntoView({ behavior: 'smooth' });
-            }
+        }
+        if (ref.current) {
+            ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     };
 
     return (
-        <>
+        <div ref={containerRef}>
             <Title img={false} />
-            <div ref={containerRef}>
-                {contens.map((content, idx) => (
-                    <AboutFirst
-                        onClick={handleClick}
-                        key={idx}
-                        idx={idx}
-                        bg={idx === 0 ? 'bg-red-500' : ''}
-                        {...content}
-                        full={idx === 0}
-                        selectedIdx={selectedIdx}
-                    />
-                ))}
-            </div>
-            {/* <div
-                className="transition-all duration-500 "
-                style={{
-                    transform: `translateY(${
-                        selectedIdx === 3 ? '0' : '-2450'
-                    }px)`,
-                }}
-            >
+
+            {contens.map((content, idx) => (
+                <AboutFirst
+                    onClick={handleClick}
+                    key={idx}
+                    idx={idx}
+                    bg={idx === 0 ? 'bg-red-500' : ''}
+                    {...content}
+                    full={idx === 0}
+                    selectedIdx={selectedIdx}
+                />
+            ))}
+
+            <div className="transition-all duration-500 -translate-y-80">
                 <AboutFooter />
-            </div> */}
-        </>
+            </div>
+        </div>
     );
 };
 
