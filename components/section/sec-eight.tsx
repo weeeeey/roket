@@ -71,7 +71,7 @@ export const SecEight = () => {
             ref={ref}
             onPointerEnter={handlePointerEnter}
             onPointerLeave={handlePointerLeave}
-            className={`overflow-hidden flex mt-72 w-[100vw] py-2 pb-4 border-y border-red-500 text-red-500 font-extrabold text-9xl uppercase ${font.className} hover:bg-red-500 hover:text-white cursor-pointer `}
+            className={`overflow-hidden flex mt-52 w-[100vw] py-2 pb-4 border-y border-red-500 text-red-500 font-extrabold text-9xl uppercase ${font.className} hover:bg-red-500 hover:text-white cursor-pointer `}
         >
             <Text containerRef={ref} isHover={isHover} />
             <Text containerRef={ref} isHover={isHover} />

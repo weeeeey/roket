@@ -16,6 +16,7 @@ const contents = ['product', 'packaging', 'about'];
 export const Navbar = () => {
     const pathname = usePathname();
     const router = useRouter();
+
     const [active, setActive] = useState('');
     const [isTop, setisTop] = useState(true);
 
@@ -32,11 +33,11 @@ export const Navbar = () => {
     }, [pathname]);
 
     const handleClick = (content: string) => {
-        router.push(`/${content}`, {
-            scroll: true,
-        });
+        // router.push(`/${content}`);
+        setTimeout(() => {
+            router.push(`/${content}`);
+        }, 1000);
     };
-
     return (
         <>
             <div
@@ -45,16 +46,19 @@ export const Navbar = () => {
                     !isTop && ' text-white z-50 bg-transparent shadow'
                 )}
             >
-                <Link href="/" className="text-xl">
+                <div
+                    onClick={() => handleClick('')}
+                    className="text-xl cursor-pointer"
+                >
                     loket.design
-                </Link>
+                </div>
                 <div
                     className={`flex justify-between items-center space-x-6  uppercase ${font.className}`}
                 >
                     {contents.map((content, idx) => (
-                        <Link href={`/${content}`} key={idx}>
+                        <div onClick={() => handleClick(content)} key={idx}>
                             <div
-                                className={`px-3 py-1 ${
+                                className={`px-3 py-1 cursor-pointer ${
                                     isTop ? 'border-red-500' : 'border-white'
                                 } ${
                                     content === active &&
@@ -64,7 +68,7 @@ export const Navbar = () => {
                                 {content}
                                 {content === 'about' && ' us'}
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
             </div>

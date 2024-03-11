@@ -1,14 +1,14 @@
 import { font } from '@/lib/font';
 import Image from 'next/image';
 import React from 'react';
+import { Footer } from '../footer';
 
 export const AboutFooter = () => {
     return (
         <div
             style={{
-                zIndex: 25,
-                transform: `translateY(-45%)`,
                 backgroundColor: '#ece9e1',
+                // backgroundColor: 'red',
             }}
             className="relative px-10 h-full flex flex-col justify-center items-center text-red-500  "
         >
@@ -27,6 +27,7 @@ export const AboutFooter = () => {
                 Pop by our studio for some fresh-made sourdough, straight from
                 the oven.
             </p>
+            <Footer />
         </div>
     );
 };

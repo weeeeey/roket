@@ -22,12 +22,25 @@ const Text = ({
 }) => {
     return (
         <motion.div
-            initial={{ y: 100, rotateX: 90 }}
-            animate={{ y: 0, rotateX: 0 }}
-            transition={{ duration: 1, delay }}
+            initial={{ opacity: 0, y: '10vh' }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5 }}
             className="w-72 "
         >
-            {children}
+            {children
+                ?.toString()
+                .split(' ')
+                .map((word, i) => (
+                    <motion.span
+                        key={i}
+                        initial={{ rotateX: 90 }}
+                        animate={{ rotateX: 0 }}
+                        transition={{ duration: 2 }}
+                        className="inline-block origin-bottom "
+                    >
+                        {word}
+                    </motion.span>
+                ))}
         </motion.div>
     );
 };
@@ -50,7 +63,7 @@ const SecFirst = () => {
                     width={100}
                     height={100}
                 />
-                <div className="flex justify-between items-start text-sm w-full ">
+                <div className="flex justify-between items-start text-sm w-full  ">
                     <Text>
                         We are a New York-based design studio—with roots in the
                         Netherlands—specializing in designing consumer products

@@ -2,7 +2,7 @@
 import { Footer } from '@/components/footer';
 import { ProMain } from '@/components/product/pro-main';
 import { Title } from '@/components/title';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const product = [
     'Cleverpup',
