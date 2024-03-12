@@ -21,8 +21,8 @@ export default function RootLayout({
             <body className={`${inter.className} h-[calc(100%-5rem)]`}>
                 <Navbar />
 
-                {children}
-                {/* <LenisProvidert>{children}</LenisProvidert> */}
+                {/* {children} */}
+                <LenisProvidert>{children}</LenisProvidert>
             </body>
         </html>
     );
