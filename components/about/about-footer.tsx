@@ -1,13 +1,14 @@
 import { font } from '@/lib/font';
 import Image from 'next/image';
-import React from 'react';
-import { Footer } from '../footer';
+
+const getTranslatY = (num: number) => (num < 2 ? num * 25 : num * 25 + 125);
 
 export const AboutFooter = () => {
     return (
         <div
             style={{
                 backgroundColor: '#ece9e1',
+                transform: `translateY(-${getTranslatY(4)}px)`,
                 // backgroundColor: 'red',
             }}
             className="relative px-10 h-full flex flex-col justify-center items-center text-red-500  "
@@ -27,7 +28,7 @@ export const AboutFooter = () => {
                 Pop by our studio for some fresh-made sourdough, straight from
                 the oven.
             </p>
-            <Footer />
+            {/* /* <Footer /> */}
         </div>
     );
 };

@@ -3,6 +3,7 @@ import { Plus } from 'lucide-react';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { IContent } from './about-data';
+import { cn } from 'zero-cnn';
 
 interface AboutFirstProps extends IContent {
     full?: boolean;
@@ -74,9 +75,10 @@ export const AboutFirst = ({
 
             <div
                 ref={hRef}
-                className={`${
-                    selectedIdx === idx ? calcHeight(idx) : 'h-0'
-                } transition-all duration-700`}
+                className={cn(
+                    'transition-all duration-700 h-0 overflow-hidden',
+                    selectedIdx === idx && calcHeight(idx)
+                )}
             >
                 <div className="overflow-hidden">
                     <div className="grid grid-cols-2 gap-x-10 my-10 pr-96">
